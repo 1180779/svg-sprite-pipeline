@@ -52,6 +52,9 @@
       <label for="size">PNG frame size (pixels)</label><input id="size" type="number" min="16" max="1024" step="1" value="96">
       <button id="png" type="button" class="export" disabled>Download PNG sheet</button>
       <button id="metadata" type="button" class="export" disabled>Download matching JSON</button>
+      <button id="godot" type="button" class="export" disabled>Download Godot .tres</button>
+      <button id="scene" type="button" class="export" disabled>Download Godot scene</button>
+      <p>For Godot 4: keep the PNG and .tres together. The optional scene applies the anchor automatically.</p>
       <p id="status" role="status" aria-live="polite">Loading…</p>
       <div id="palette" class="swatches" aria-label="Palette"></div>
     </aside>
@@ -60,6 +63,6 @@
   <p>Loops repeat; jump, parry, hurt, shoot and burst play once. Use Play to replay. The PNG and JSON exports use the same size and facing selections. Guides are preview-only.</p>
   <footer>LLM-authored SVG placeholders inspired by Feedback’s mockup palette. Visual timing is illustrative; gameplay events belong in the engine. No external services or network requests.</footer>
   <script id="catalog" type="application/json">/* CATALOG_DATA */</script>
-  <script>/* PREVIEW_SCRIPT */</script>
+  <script type="module">/* PREVIEW_SCRIPT */</script>
 </body>
 </html>

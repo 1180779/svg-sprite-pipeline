@@ -6,3 +6,5 @@ exports/
 Thumbs.db
 .idea/
 .vscode/
+.godot/
+*.svg.import

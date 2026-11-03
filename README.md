@@ -17,6 +17,39 @@ its matching JSON. Keep the same size and facing selections for both downloads.
 SVGs are rasterized directly at the selected size, rather than enlarging a small PNG.
 Guides and checkerboards are preview-only and never enter exported images.
 
+## Use in Godot 4
+
+For a quick trial, import `generated/project.godot` in Godot and run it (F5).
+The demo loads all 11 animations from native resources backed by the SVG sheets;
+no PNG export or JSON importer is required. One-shot clips play once on startup.
+
+To use a raster export in your own project:
+
+1. In the browser preview, choose a clip, frame size, and facing direction.
+2. Download the **PNG sheet** and **Godot .tres** using the same settings.
+3. Copy both into the same folder inside your Godot project. Keep their filenames.
+4. Assign the `.tres` to an `AnimatedSprite2D` node's **Sprite Frames** property.
+   It already contains the animation name, frame regions, durations, and loop flag.
+5. Optionally download **Godot scene** with the same settings and place it beside
+   the PNG and `.tres`. Instance that `.tscn` to get an `AnimatedSprite2D` with the
+   animation, autoplay, and anchor offset already configured.
+
+The `.tres` alone stores the anchor as `metadata/pipeline_anchor`; it cannot apply
+a node offset. For a manually created node, disable **Centered** and set **Offset**
+to the negative anchor (at 96 px: `(-48, -80)` for characters, `(-48, -48)` for FX).
+The optional scene performs this step. Left-facing PNGs are already mirrored;
+do not also enable Flip H unless you intend to reverse them again.
+
+Each `.tres` contains one clip. To use several clips on a single character, merge
+their animations into one SpriteFrames resource in Godot or switch resources in
+your controller. The demo is an art preview and contains no movement or combat code.
+Texture references are relative, so keep dependent files together when copying.
+
+Godot frame durations are relative to animation FPS. The exporter uses a base
+speed of 10 FPS with duration weights `durationMs / 100`, preserving variable timing
+at normal playback speed. See [SpriteFrames](https://docs.godotengine.org/en/stable/classes/class_spriteframes.html)
+and [AnimatedSprite2D](https://docs.godotengine.org/en/stable/classes/class_animatedsprite2d.html).
+
 ## Develop and regenerate
 
 Requires Node.js 22+ and npm. All authored application code is strict TypeScript.
@@ -50,6 +83,8 @@ Edit it instead of editing generated SVGs. `src/generate.ts` writes:
 - `generated/manifest.json`: source sheet paths, frame rectangles, durations, anchors, and loop flags.
 - `generated/palette.svg`: palette reference.
 - `generated/contact-sheet.svg`: labeled overview of every pose (review artifact, not a game sheet).
+- `generated/godot/`: SVG-backed Godot 4 resources, anchored sprite scenes, and a demo scene.
+- `generated/project.godot`: standalone Godot demo project.
 - `preview.html`: self-contained preview/export tool, built from `src/preview.html` and `src/preview.ts`.
 
 Committed generated output makes the experiment immediately reviewable. `dist/`,
@@ -67,8 +102,8 @@ from the frame's top left. Engine origin = frame origin + anchor. When rasterize
 the JSON export scales anchors and rectangles to the chosen pixel size.
 
 Left-facing export mirrors each frame individually and preserves frame order.
-Use a transparent canvas and preserve the full cell on import. No engine-specific
-importer is included; the generic PNG and JSON can be adapted after engine selection.
+Use a transparent canvas and preserve the full cell on import. Godot 4 resources
+are included; the generic PNG and JSON remain available for other engines.
 
 Jump poses show anticipation, tucked legs, falling, and landing. Actual world motion
 belongs to the engine. Parry/shoot `visualCue` fields mark an illustrative art frame,

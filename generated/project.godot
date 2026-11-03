@@ -1,0 +1,14 @@
+; Generated SVG animation preview project for Godot 4.
+config_version=5
+
+[application]
+config/name="Feedback SVG placeholders"
+run/main_scene="res://godot/demo.tscn"
+
+[display]
+window/size/viewport_width=1100
+window/size/viewport_height=700
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.08, 0.11, 0.14, 1)

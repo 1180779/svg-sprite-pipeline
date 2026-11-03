@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" path="player-idle.tscn" id="1"]
+[ext_resource type="PackedScene" path="player-run.tscn" id="2"]
+[ext_resource type="PackedScene" path="player-jump.tscn" id="3"]
+[ext_resource type="PackedScene" path="player-parry.tscn" id="4"]
+[ext_resource type="PackedScene" path="player-hurt.tscn" id="5"]
+[ext_resource type="PackedScene" path="sentinel-idle.tscn" id="6"]
+[ext_resource type="PackedScene" path="sentinel-move.tscn" id="7"]
+[ext_resource type="PackedScene" path="sentinel-shoot.tscn" id="8"]
+[ext_resource type="PackedScene" path="sentinel-hurt.tscn" id="9"]
+[ext_resource type="PackedScene" path="projectile-fly.tscn" id="10"]
+[ext_resource type="PackedScene" path="parry-fx-burst.tscn" id="11"]
+
+[node name="Demo" type="Node2D"]
+
+[node name="Sprite0" parent="." instance=ExtResource("1")]
+position = Vector2(120, 150)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label0" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 165.0
+text = "player-idle"
+
+[node name="Sprite1" parent="." instance=ExtResource("2")]
+position = Vector2(380, 150)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label1" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 165.0
+text = "player-run"
+
+[node name="Sprite2" parent="." instance=ExtResource("3")]
+position = Vector2(640, 150)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 560.0
+offset_top = 165.0
+text = "player-jump"
+
+[node name="Sprite3" parent="." instance=ExtResource("4")]
+position = Vector2(900, 150)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 820.0
+offset_top = 165.0
+text = "player-parry"
+
+[node name="Sprite4" parent="." instance=ExtResource("5")]
+position = Vector2(120, 350)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 365.0
+text = "player-hurt"
+
+[node name="Sprite5" parent="." instance=ExtResource("6")]
+position = Vector2(380, 350)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 365.0
+text = "sentinel-idle"
+
+[node name="Sprite6" parent="." instance=ExtResource("7")]
+position = Vector2(640, 350)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 560.0
+offset_top = 365.0
+text = "sentinel-move"
+
+[node name="Sprite7" parent="." instance=ExtResource("8")]
+position = Vector2(900, 350)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 820.0
+offset_top = 365.0
+text = "sentinel-shoot"
+
+[node name="Sprite8" parent="." instance=ExtResource("9")]
+position = Vector2(120, 550)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 565.0
+text = "sentinel-hurt"
+
+[node name="Sprite9" parent="." instance=ExtResource("10")]
+position = Vector2(380, 550)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 565.0
+text = "projectile-fly"
+
+[node name="Sprite10" parent="." instance=ExtResource("11")]
+position = Vector2(640, 550)
+scale = Vector2(1.5, 1.5)
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 560.0
+offset_top = 565.0
+text = "parry-fx-burst"

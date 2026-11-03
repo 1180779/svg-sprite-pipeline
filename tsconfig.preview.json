@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "None",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
     "lib": ["ES2022", "DOM"],
     "types": [],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outFile": "dist/preview.js"
+    "outDir": "dist/browser",
+    "rootDir": "src"
   },
   "files": ["src/preview.ts"]
 }

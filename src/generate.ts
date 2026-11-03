@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ANCHOR, CELL, CLIPS, PALETTE, frameBody, svg } from './art.js';
+import { spriteFrames, spriteScene } from './godot.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const checking = process.argv.includes('--check');
@@ -37,6 +38,20 @@ for (const clip of CLIPS) {
     visualCue: clip.visualCue ?? null, frames, svg: sheet });
 }
 const catalog = { schemaVersion: 1, logicalFrameSize: CELL, palette: PALETTE, clips };
+for (const clip of clips) {
+  await output(`generated/godot/${clip.id}.tres`, spriteFrames(clip, CELL, CELL, `../sheets/${clip.id}.svg`));
+  await output(`generated/godot/${clip.id}.tscn`, spriteScene(clip, CELL, CELL, `${clip.id}.tres`));
+}
+await output('generated/project.godot', `; Generated SVG animation preview project for Godot 4.\nconfig_version=5\n\n[application]\nconfig/name="Feedback SVG placeholders"\nrun/main_scene="res://godot/demo.tscn"\n\n[display]\nwindow/size/viewport_width=1100\nwindow/size/viewport_height=700\n\n[rendering]\nrenderer/rendering_method="gl_compatibility"\nenvironment/defaults/default_clear_color=Color(0.08, 0.11, 0.14, 1)\n`);
+await output('generated/godot/demo.tscn', `[gd_scene load_steps=${clips.length + 1} format=3]\n\n`
+  + clips.map((clip, index) => `[ext_resource type="PackedScene" path="${clip.id}.tscn" id="${index + 1}"]\n`).join('')
+  + '\n[node name="Demo" type="Node2D"]\n'
+  + clips.map((clip, index) => {
+    const x = 120 + index % 4 * 260;
+    const y = 150 + Math.floor(index / 4) * 200;
+    return `\n[node name="Sprite${index}" parent="." instance=ExtResource("${index + 1}")]\nposition = Vector2(${x}, ${y})\nscale = Vector2(1.5, 1.5)\n`
+      + `\n[node name="Label${index}" type="Label" parent="."]\noffset_left = ${x - 80}.0\noffset_top = ${y + 15}.0\ntext = "${clip.id}"\n`;
+  }).join(''));
 const contactWidth = CELL * 8 + 32;
 const contactHeight = clips.length * 124 + 16;
 await output('generated/contact-sheet.svg', svg(
@@ -52,7 +67,11 @@ await output('generated/manifest.json', JSON.stringify({ ...catalog,
 await output('generated/palette.svg', svg(Object.entries(PALETTE).map(([name, color], i) =>
   `<g><rect x="${i * 80}" width="80" height="56" fill="${color}"/><text x="${i * 80 + 4}" y="72" font-size="10" fill="#202733">${name}</text></g>`).join(''), Object.keys(PALETTE).length * 80, 80));
 const template = await readFile(resolve(root, 'src/preview.html'), 'utf8');
-const script = await readFile(resolve(root, 'dist/preview.js'), 'utf8');
+const browserCode = await readFile(resolve(root, 'dist/browser/preview.js'), 'utf8');
+const godotCode = await readFile(resolve(root, 'dist/browser/godot.js'), 'utf8');
+if (!browserCode.includes("from './godot.js'")) throw new Error('Missing browser exporter import.');
+// Inline the shared ES module as a data URL so file:// preview needs no server.
+const script = browserCode.replace("from './godot.js'", `from "data:text/javascript;base64,${Buffer.from(godotCode).toString('base64')}"`);
 await output('preview.html', template.replace('/* CATALOG_DATA */', JSON.stringify(catalog).replaceAll('<', '\\u003c'))
   .replace('/* PREVIEW_SCRIPT */', () => script));
 console.log(`${checking ? 'Verified' : 'Generated'} ${clips.length} clips, ${clips.reduce((n, c) => n + c.frames.length, 0)} frames, manifest, palette and offline preview.`);

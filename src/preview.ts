@@ -1,3 +1,5 @@
+import { spriteFrames, spriteScene } from './godot.js';
+
 interface PreviewFrame {
   index: number; x: number; y: number; width: number; height: number; durationMs: number;
 }
@@ -28,6 +30,8 @@ const slider = element<HTMLInputElement>('frame');
 const play = element<HTMLButtonElement>('play');
 const pngButton = element<HTMLButtonElement>('png');
 const metadataButton = element<HTMLButtonElement>('metadata');
+const godotButton = element<HTMLButtonElement>('godot');
+const sceneButton = element<HTMLButtonElement>('scene');
 const guides = element<HTMLInputElement>('guides');
 const canvas = element<HTMLCanvasElement>('preview');
 const ctx = context(canvas);
@@ -107,6 +111,7 @@ async function loadClip(): Promise<void> {
   const version = ++loadVersion;
   current = catalog.clips.find((clip) => clip.id === select.value)!;
   image = null; pngButton.disabled = true; metadataButton.disabled = true;
+  godotButton.disabled = true; sceneButton.disabled = true;
   slider.max = String(current.frames.length - 1);
   frameIndex = 0; pausedAt = 0; playing = false;
   statusElement.textContent = 'Loading vector sheet…';
@@ -121,6 +126,7 @@ async function loadClip(): Promise<void> {
     element('sheet').replaceChildren(strip);
     started = performance.now(); playing = true; play.textContent = 'Pause';
     pngButton.disabled = false; metadataButton.disabled = false;
+    godotButton.disabled = false; sceneButton.disabled = false;
     element('info').textContent = `${current.frames.length} frames · ${duration()} ms · ${current.loop ? 'loop' : 'one shot'} · logical cell ${catalog.logicalFrameSize} × ${catalog.logicalFrameSize}\nAnchor (${current.anchor.x}, ${current.anchor.y})${current.visualCue ? ` · ${current.visualCue.label} at frame ${current.visualCue.frame + 1}` : ''}`;
     statusElement.textContent = 'Ready. Export uses the vector source at your chosen size.';
   } catch (error) {
@@ -169,6 +175,24 @@ metadataButton.addEventListener('click', () => {
   } catch (error) { statusElement.textContent = String(error); }
 });
 select.addEventListener('change', () => { void loadClip(); });
+godotButton.addEventListener('click', () => {
+  try {
+    const size = exportSize();
+    const name = filename(size);
+    download(new Blob([spriteFrames(current, size, catalog.logicalFrameSize, `${name}.png`, mirrored())],
+      { type: 'text/plain' }), `${name}.tres`);
+    statusElement.textContent = `Exported ${name}.tres. Keep it beside the matching PNG inside your Godot 4 project.`;
+  } catch (error) { statusElement.textContent = String(error); }
+});
+sceneButton.addEventListener('click', () => {
+  try {
+    const size = exportSize();
+    const name = filename(size);
+    download(new Blob([spriteScene(current, size, catalog.logicalFrameSize, `${name}.tres`, mirrored())],
+      { type: 'text/plain' }), `${name}.tscn`);
+    statusElement.textContent = 'Exported anchored AnimatedSprite2D scene. Keep PNG, .tres and .tscn together, with matching size and facing.';
+  } catch (error) { statusElement.textContent = String(error); }
+});
 facing.addEventListener('change', draw);
 play.addEventListener('click', () => {
   if (playing) { pausedAt = performance.now() - started; playing = false; play.textContent = 'Play'; }
