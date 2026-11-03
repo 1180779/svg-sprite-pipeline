@@ -1,0 +1,753 @@
+{
+  "schemaVersion": 1,
+  "logicalFrameSize": 96,
+  "palette": {
+    "outline": "#202733",
+    "armor": "#647588",
+    "light": "#9bafbf",
+    "dark": "#394655",
+    "skin": "#c4a58b",
+    "cape": "#66568c",
+    "energy": "#c3a1ff",
+    "flash": "#f5eeff",
+    "moss": "#617a58",
+    "mossLight": "#91a978",
+    "mossDark": "#354b3d",
+    "danger": "#ef917d"
+  },
+  "clips": [
+    {
+      "id": "player-idle",
+      "asset": "player",
+      "action": "idle",
+      "loop": true,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/player-idle.svg",
+      "sheetWidth": 384,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 240,
+          "file": "generated/frames/player-idle/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 240,
+          "file": "generated/frames/player-idle/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 240,
+          "file": "generated/frames/player-idle/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 240,
+          "file": "generated/frames/player-idle/03.svg"
+        }
+      ]
+    },
+    {
+      "id": "player-run",
+      "asset": "player",
+      "action": "run",
+      "loop": true,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/player-run.svg",
+      "sheetWidth": 768,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/03.svg"
+        },
+        {
+          "index": 4,
+          "x": 384,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/04.svg"
+        },
+        {
+          "index": 5,
+          "x": 480,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/05.svg"
+        },
+        {
+          "index": 6,
+          "x": 576,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/06.svg"
+        },
+        {
+          "index": 7,
+          "x": 672,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-run/07.svg"
+        }
+      ]
+    },
+    {
+      "id": "player-jump",
+      "asset": "player",
+      "action": "jump",
+      "loop": false,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/player-jump.svg",
+      "sheetWidth": 576,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 90,
+          "file": "generated/frames/player-jump/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-jump/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 110,
+          "file": "generated/frames/player-jump/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 160,
+          "file": "generated/frames/player-jump/03.svg"
+        },
+        {
+          "index": 4,
+          "x": 384,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/player-jump/04.svg"
+        },
+        {
+          "index": 5,
+          "x": 480,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/player-jump/05.svg"
+        }
+      ]
+    },
+    {
+      "id": "player-parry",
+      "asset": "player",
+      "action": "parry",
+      "loop": false,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/player-parry.svg",
+      "sheetWidth": 576,
+      "sheetHeight": 96,
+      "visualCue": {
+        "frame": 2,
+        "label": "guard flash (visual only)"
+      },
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 60,
+          "file": "generated/frames/player-parry/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 50,
+          "file": "generated/frames/player-parry/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-parry/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/player-parry/03.svg"
+        },
+        {
+          "index": 4,
+          "x": 384,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/player-parry/04.svg"
+        },
+        {
+          "index": 5,
+          "x": 480,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/player-parry/05.svg"
+        }
+      ]
+    },
+    {
+      "id": "player-hurt",
+      "asset": "player",
+      "action": "hurt",
+      "loop": false,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/player-hurt.svg",
+      "sheetWidth": 384,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/player-hurt/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 90,
+          "file": "generated/frames/player-hurt/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/player-hurt/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 120,
+          "file": "generated/frames/player-hurt/03.svg"
+        }
+      ]
+    },
+    {
+      "id": "sentinel-idle",
+      "asset": "sentinel",
+      "action": "idle",
+      "loop": true,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/sentinel-idle.svg",
+      "sheetWidth": 384,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 260,
+          "file": "generated/frames/sentinel-idle/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 260,
+          "file": "generated/frames/sentinel-idle/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 260,
+          "file": "generated/frames/sentinel-idle/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 260,
+          "file": "generated/frames/sentinel-idle/03.svg"
+        }
+      ]
+    },
+    {
+      "id": "sentinel-move",
+      "asset": "sentinel",
+      "action": "move",
+      "loop": true,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/sentinel-move.svg",
+      "sheetWidth": 768,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/03.svg"
+        },
+        {
+          "index": 4,
+          "x": 384,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/04.svg"
+        },
+        {
+          "index": 5,
+          "x": 480,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/05.svg"
+        },
+        {
+          "index": 6,
+          "x": 576,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/06.svg"
+        },
+        {
+          "index": 7,
+          "x": 672,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-move/07.svg"
+        }
+      ]
+    },
+    {
+      "id": "sentinel-shoot",
+      "asset": "sentinel",
+      "action": "shoot",
+      "loop": false,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/sentinel-shoot.svg",
+      "sheetWidth": 576,
+      "sheetHeight": 96,
+      "visualCue": {
+        "frame": 2,
+        "label": "muzzle flash (visual only)"
+      },
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 120,
+          "file": "generated/frames/sentinel-shoot/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-shoot/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/sentinel-shoot/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/sentinel-shoot/03.svg"
+        },
+        {
+          "index": 4,
+          "x": 384,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-shoot/04.svg"
+        },
+        {
+          "index": 5,
+          "x": 480,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 140,
+          "file": "generated/frames/sentinel-shoot/05.svg"
+        }
+      ]
+    },
+    {
+      "id": "sentinel-hurt",
+      "asset": "sentinel",
+      "action": "hurt",
+      "loop": false,
+      "anchor": {
+        "x": 48,
+        "y": 80
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/sentinel-hurt.svg",
+      "sheetWidth": 384,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/sentinel-hurt/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 90,
+          "file": "generated/frames/sentinel-hurt/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/sentinel-hurt/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 120,
+          "file": "generated/frames/sentinel-hurt/03.svg"
+        }
+      ]
+    },
+    {
+      "id": "projectile-fly",
+      "asset": "projectile",
+      "action": "fly",
+      "loop": true,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/projectile-fly.svg",
+      "sheetWidth": 384,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/projectile-fly/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/projectile-fly/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/projectile-fly/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/projectile-fly/03.svg"
+        }
+      ]
+    },
+    {
+      "id": "parry-fx-burst",
+      "asset": "parry-fx",
+      "action": "burst",
+      "loop": false,
+      "anchor": {
+        "x": 48,
+        "y": 48
+      },
+      "facing": "right",
+      "sheet": "generated/sheets/parry-fx-burst.svg",
+      "sheetWidth": 576,
+      "sheetHeight": 96,
+      "visualCue": null,
+      "frames": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 40,
+          "file": "generated/frames/parry-fx-burst/00.svg"
+        },
+        {
+          "index": 1,
+          "x": 96,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 50,
+          "file": "generated/frames/parry-fx-burst/01.svg"
+        },
+        {
+          "index": 2,
+          "x": 192,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 60,
+          "file": "generated/frames/parry-fx-burst/02.svg"
+        },
+        {
+          "index": 3,
+          "x": 288,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 70,
+          "file": "generated/frames/parry-fx-burst/03.svg"
+        },
+        {
+          "index": 4,
+          "x": 384,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 80,
+          "file": "generated/frames/parry-fx-burst/04.svg"
+        },
+        {
+          "index": 5,
+          "x": 480,
+          "y": 0,
+          "width": 96,
+          "height": 96,
+          "durationMs": 100,
+          "file": "generated/frames/parry-fx-burst/05.svg"
+        }
+      ]
+    }
+  ]
+}

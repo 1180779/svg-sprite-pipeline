@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Feedback · SVG sprite workshop</title>
+  <style>
+    :root { color-scheme: dark; font: 16px/1.5 system-ui, sans-serif; background: #151c22; color: #e7e8e4; }
+    * { box-sizing: border-box; }
+    body { max-width: 1120px; margin: auto; padding: 32px 24px 60px; }
+    h1 { font-size: clamp(26px, 5vw, 42px); margin: 8px 0; letter-spacing: -.04em; }
+    h2 { font-size: 18px; margin-top: 0; }
+    p { color: #aebdc3; max-width: 72ch; }
+    .eyebrow { color: #c3a1ff; font: 12px monospace; letter-spacing: .16em; }
+    main { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; margin: 28px 0; }
+    section, aside { background: #202a32; border: 1px solid #3a4853; border-radius: 14px; padding: 24px; }
+    .stage { display: grid; place-items: center; min-height: 370px; background: #161f26; border-radius: 8px; }
+    canvas { width: min(100%, 384px); height: auto; background-color: #222c35; background-image: conic-gradient(#2a3540 25%, transparent 0 50%, #2a3540 0 75%, transparent 0); background-size: 24px 24px; }
+    label { display: block; color: #c5d0d7; font-size: 14px; margin: 14px 0 6px; }
+    select, input[type=number], button { font: inherit; padding: 10px 12px; border-radius: 6px; border: 1px solid #5a6a78; background: #162029; color: #e7e8e4; }
+    select, input[type=number] { width: 100%; }
+    button { cursor: pointer; } button:hover { border-color: #c3a1ff; } button:disabled { opacity: .4; cursor: wait; }
+    button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #c3a1ff; outline-offset: 3px; }
+    .controls { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+    #frame { flex: 1; min-width: 120px; accent-color: #c3a1ff; }
+    .export { display: block; width: 100%; margin-top: 12px; background: #46375f; }
+    #info, #status { font-size: 13px; white-space: pre-line; }
+    #sheet { overflow: auto; padding: 12px; background: #161f26; }
+    #sheet img { height: 96px; max-width: none; }
+    .swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .swatch { width: 24px; height: 24px; border-radius: 4px; border: 1px solid #7d8793; }
+    footer { color: #aebdc3; font-size: 13px; }
+    @media (max-width: 750px) { main { grid-template-columns: 1fr; } body { padding: 20px 14px; } }
+  </style>
+</head>
+<body>
+  <header><div class="eyebrow">FEEDBACK / PLACEHOLDER WORKSHOP</div>
+    <h1>Small rigs. Consistent sprites.</h1>
+    <p>Vector characters, explicit poses, transparent sheets. Preview the motion and export at the resolution your game needs.</p>
+  </header>
+  <main>
+    <section aria-label="Animation preview">
+      <div class="stage"><canvas id="preview" width="384" height="384" aria-label="Animated sprite preview"></canvas></div>
+      <div class="controls"><button id="play" type="button">Pause</button><label for="frame">Frame</label><input id="frame" type="range" min="0" max="7" value="0"><output id="counter"></output></div>
+      <label><input id="guides" type="checkbox" checked> Show anchor and ground guides</label>
+      <p id="info"></p>
+    </section>
+    <aside>
+      <h2>Animation &amp; export</h2>
+      <label for="clip">Clip</label><select id="clip"></select>
+      <label for="facing">Facing</label><select id="facing"><option value="right">Right</option><option value="left">Left (mirrored)</option></select>
+      <label for="size">PNG frame size (pixels)</label><input id="size" type="number" min="16" max="1024" step="1" value="96">
+      <button id="png" type="button" class="export" disabled>Download PNG sheet</button>
+      <button id="metadata" type="button" class="export" disabled>Download matching JSON</button>
+      <p id="status" role="status" aria-live="polite">Loading…</p>
+      <div id="palette" class="swatches" aria-label="Palette"></div>
+    </aside>
+  </main>
+  <section><h2>Frame strip</h2><div id="sheet"></div></section>
+  <p>Loops repeat; jump, parry, hurt, shoot and burst play once. Use Play to replay. The PNG and JSON exports use the same size and facing selections. Guides are preview-only.</p>
+  <footer>LLM-authored SVG placeholders inspired by Feedback’s mockup palette. Visual timing is illustrative; gameplay events belong in the engine. No external services or network requests.</footer>
+  <script id="catalog" type="application/json">/* CATALOG_DATA */</script>
+  <script>/* PREVIEW_SCRIPT */</script>
+</body>
+</html>

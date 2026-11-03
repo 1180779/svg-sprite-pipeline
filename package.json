@@ -1,0 +1,18 @@
+{
+  "name": "feedback-svg-sprite-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic SVG placeholder animations authored in TypeScript",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.preview.json && node dist/generate.js",
+    "check": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.preview.json --noEmit",
+    "test": "npm run build && node --test dist/pipeline.test.js",
+    "verify": "npm run check && npm test && node dist/generate.js --check"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}
